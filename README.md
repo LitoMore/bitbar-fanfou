@@ -19,27 +19,20 @@ A Fanfou `/account/notification` tool with [BitBar](https://github.com/matryer/b
 $ git clone git@github.com:LitoMore/bitbar-fanfou.git
 ```
 
-2. Install dependencies
-
-```bash
-$ cd bitbar-fanfou
-$ npm i
-```
-
-3. Create your config file
+2. Create your config file
 
 ```bash
 $ cd bitbar-fanfou
 $ cp config/setings.json.example config/settings.json
 ```
 
-4. Link to your BitBar plugin path
+3. Link to your BitBar plugin path
 
 ```bash
 $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 ```
 
-## Configuration
+### Settings
 
 - `consumerKey`: Your consumer key
 - `consumerSecret`: Your consumer secret
