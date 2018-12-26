@@ -1,0 +1,36 @@
+{
+  "name": "bitbar-fanfou",
+  "version": "0.0.0",
+  "description": "BitBar Fanfou",
+  "main": "app.js",
+  "scripts": {
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LitoMore/bitbar-fanfou.git"
+  },
+  "keywords": [
+    "bitbar",
+    "fanfou"
+  ],
+  "author": "LitoMore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LitoMore/bitbar-fanfou/issues"
+  },
+  "homepage": "https://github.com/LitoMore/bitbar-fanfou#readme",
+  "dependencies": {
+    "bitbar": "^0.4.0",
+    "fanfou-sdk": "^3.2.0",
+    "import-lazy": "^3.1.0"
+  },
+  "devDependencies": {
+    "xo": "^0.23.0"
+  },
+  "xo": {
+    "rules": {
+      "import/no-unresolved": 0
+    }
+  }
+}
