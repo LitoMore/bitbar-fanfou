@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/LitoMore/bitbar-fanfou/master/icon.svg?sanitize=true" align="right" />
+<img src="https://raw.githubusercontent.com/LitoMore/bitbar-fanfou/master/media/icon.svg?sanitize=true" align="right" />
 
 # bitbar-fanfou
 
@@ -9,7 +9,7 @@
 
 A Fanfou `/account/notification` tool with [BitBar](https://github.com/matryer/bitbar)
 
-<div align="center"><img width="33%" height="33%" src="https://raw.githubusercontent.com/LitoMore/bitbar-fanfou/master/screenshot.png" /></div>
+<div align="center"><img width="33%" height="33%" src="https://raw.githubusercontent.com/LitoMore/bitbar-fanfou/master/media/screenshot.png" /></div>
 
 ## Usage
 

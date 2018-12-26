@@ -13,9 +13,9 @@ const path = require('path');
 const importLazy = require('import-lazy')(require);
 
 const common = importLazy('./utils/common');
-const normalIcon = path.join(__dirname, 'icon.png');
-const activeIcon = path.join(__dirname, 'icon-active.png');
-const errorIcon = path.join(__dirname, 'icon-error.png');
+const normalIcon = path.join(__dirname, 'media/icon.png');
+const activeIcon = path.join(__dirname, 'media/icon-active.png');
+const errorIcon = path.join(__dirname, 'media/icon-error.png');
 
 // Check dependencies
 const installed = fs.existsSync(path.join(__dirname, 'node_modules'));
