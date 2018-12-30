@@ -3,5 +3,6 @@
 	"consumerSecret": "",
 	"username": "",
 	"password": "",
-	"https": true
+	"https": true,
+	"notification:: true
 }

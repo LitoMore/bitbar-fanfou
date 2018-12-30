@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const execa = require('execa');
 
 const hasConfig = () => {
 	return fs.existsSync(path.join(__dirname, '../config/settings.json'));
@@ -16,7 +17,7 @@ const shell = (shell, opt) => {
 	const allParams = Object.keys(opt)
 		.map(key => `${key}="${opt[key]}"`)
 		.join(' ');
-	return `bash="${path.join(__dirname, `../shell/${shell}`)}" ${allParams}`;
+	return `bash="${path.join(__dirname, `../scripts/${shell}`)}" ${allParams}`;
 };
 
 const renderInstallMenu = () => {
@@ -29,6 +30,10 @@ const renderConfigMenu = () => {
 	console.log(`Reveal config in Finder | ${shell('open.sh', {terminal: false, param1: path.join(__dirname, '../config')})}"`);
 };
 
+const showNotifier = message => {
+	return execa(path.join(__dirname, '../scripts/notifier.applescript'), [message]);
+};
+
 const getSettings = () => {
 	return JSON.parse(fs.readFileSync(path.join(__dirname, '../config/settings.json')));
 };
@@ -38,5 +43,6 @@ module.exports = {
 	iconEncode,
 	renderInstallMenu,
 	renderConfigMenu,
+	showNotifier,
 	getSettings
 };

@@ -10,6 +10,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const Conf = require('conf');
 const importLazy = require('import-lazy')(require);
 
 const common = importLazy('./utils/common');
@@ -36,11 +37,12 @@ if (!common.hasConfig()) {
 	process.exit(1);
 }
 
-const {consumerKey, consumerSecret, username, password, https} = common.getSettings();
+const {consumerKey, consumerSecret, username, password, https, notification} = common.getSettings();
 const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.com/mentions`;
 const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.com/privatemsg`;
 const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.com/friend.request`;
 
+const config = new Conf();
 const ff = new Fanfou({
 	consumerKey,
 	consumerSecret,
@@ -55,7 +57,41 @@ const ff = new Fanfou({
 	try {
 		await ff.xauth();
 		const result = await ff.get('/account/notification');
+		const {m = 0, dm = 0, fr = 0} = config.get('notification') || {};
 		const {mentions, direct_messages: directMessages, friend_requests: friendRequests} = result;
+		const newMentions = mentions > m;
+		const newDirectmessages = directMessages > dm;
+		const newFriendRequests = friendRequests > fr;
+		config.set('notification', {m: mentions, dm: directMessages, fr: friendRequests});
+		if (notification && (newMentions || newDirectmessages || newFriendRequests)) {
+			common.showNotifier(
+				[
+					{type: 'm', value: newMentions},
+					{type: 'dm', value: newDirectmessages},
+					{type: 'fr', value: newFriendRequests}
+				]
+					.filter(item => item.value)
+					.map(item => {
+						switch (item.type) {
+							case 'm': {
+								const count = mentions - m;
+								return `${count} mention${count > 1 ? 's' : ''}`;
+							}
+							case 'dm': {
+								const count = directMessages - dm;
+								return `${count} direct message${count > 1 ? 's' : ''}`;
+							}
+							case 'fr': {
+								const count = friendRequests - fr;
+								return `${count} friend request${count > 1 ? 's' : ''}`;
+							}
+							default:
+								return '';
+						}
+					})
+					.join('\n')
+			);
+		}
 		const active = mentions + directMessages + friendRequests > 0;
 		console.log(` | templateImage=${common.iconEncode(active ? activeIcon : normalIcon)}`);
 		console.log('---');
