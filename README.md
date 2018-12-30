@@ -39,6 +39,7 @@ $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 - `username`: Your Fanfou username
 - `password`: Your Fanfou password
 - `https`: Use HTTPS secure connection
+- `notification`: Use macOS built-in notification
 
 ## Related
 
