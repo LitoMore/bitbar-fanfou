@@ -74,16 +74,13 @@ const ff = new Fanfou({
 					.map(item => {
 						switch (item.type) {
 							case 'm': {
-								const count = mentions - m;
-								return `${count} mention${count > 1 ? 's' : ''}`;
+								return `${mentions} mention${mentions - m > 1 ? 's' : ''}`;
 							}
 							case 'dm': {
-								const count = directMessages - dm;
-								return `${count} direct message${count > 1 ? 's' : ''}`;
+								return `${directMessages} direct message${directMessages - dm > 1 ? 's' : ''}`;
 							}
 							case 'fr': {
-								const count = friendRequests - fr;
-								return `${count} friend request${count > 1 ? 's' : ''}`;
+								return `${friendRequests} friend request${friendRequests - fr > 1 ? 's' : ''}`;
 							}
 							default:
 								return '';
