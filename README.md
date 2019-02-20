@@ -32,6 +32,12 @@ $ cp config/setings.json.example config/settings.json
 $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 ```
 
+---
+
+<a href="https://www.patreon.com/LitoMore">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 ### Settings
 
 - `consumerKey`: Your consumer key
