@@ -77,12 +77,15 @@ const ff = new Fanfou({
 							case 'm': {
 								return `${mentions} mention${mentions - m > 1 ? 's' : ''}`;
 							}
+
 							case 'dm': {
 								return `${directMessages} direct message${directMessages - dm > 1 ? 's' : ''}`;
 							}
+
 							case 'fr': {
 								return `${friendRequests} friend request${friendRequests - fr > 1 ? 's' : ''}`;
 							}
+
 							default:
 								return '';
 						}
@@ -90,6 +93,7 @@ const ff = new Fanfou({
 					.join('\n')
 			);
 		}
+
 		const active = mentions + directMessages + friendRequests > 0;
 		console.log(` | templateImage=${common.iconEncode(active ? activeIcon : normalIcon)}`);
 		console.log('---');
@@ -101,5 +105,6 @@ const ff = new Fanfou({
 		console.log('---');
 		console.log(error.message);
 	}
+
 	common.renderConfigMenu();
 })();
