@@ -23,7 +23,7 @@ $ git clone git@github.com:LitoMore/bitbar-fanfou.git
 
 ```bash
 $ cd bitbar-fanfou
-$ cp config/setings.json.example config/settings.json
+$ cp config/settings.json.example config/settings.json
 ```
 
 3. Link to your BitBar plugin path
