@@ -100,6 +100,7 @@ const ff = new Fanfou({
 		console.log(`Mentions: ${mentions}${mentions > 0 ? mentionsLink : ''}`);
 		console.log(`Direct messages: ${directMessages}${directMessages > 0 ? directMessagesLink : ''}`);
 		console.log(`Friend requests: ${friendRequests}${friendRequests > 0 ? friendRequestsLink : ''}`);
+		common.renderClearNotifications(active);
 	} catch (error) {
 		console.log(` | templateImage=${common.iconEncode(errorIcon)}`);
 		console.log('---');

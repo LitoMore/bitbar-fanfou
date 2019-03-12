@@ -30,6 +30,12 @@ const renderConfigMenu = () => {
 	console.log(`Reveal config in Finder | ${shell('open.sh', {terminal: false, param1: path.join(__dirname, '../config')})}"`);
 };
 
+const renderClearNotifications = enabled => {
+	const clearCommand = ` | ${shell('clear-notifications.js', {terminal: false, refresh: true})}`;
+	console.log('—');
+	console.log(`Clear notifications${enabled ? clearCommand : ''}`);
+};
+
 const showNotifier = message => {
 	return execa(path.join(__dirname, '../scripts/notifier.applescript'), [message]);
 };
@@ -43,6 +49,7 @@ module.exports = {
 	iconEncode,
 	renderInstallMenu,
 	renderConfigMenu,
+	renderClearNotifications,
 	showNotifier,
 	getSettings
 };
