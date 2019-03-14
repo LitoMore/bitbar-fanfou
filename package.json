@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/LitoMore/bitbar-fanfou#readme",
   "dependencies": {
-    "bitbar": "^0.4.0",
     "conf": "^3.0.0",
     "execa": "^1.0.0",
     "fanfou-sdk": "^4.0.0",
