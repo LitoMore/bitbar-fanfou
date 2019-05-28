@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const execa = require('execa');
 
 const hasConfig = () => {
 	return fs.existsSync(path.join(__dirname, '../config/settings.json'));
@@ -37,6 +36,7 @@ const renderClearNotifications = enabled => {
 };
 
 const showNotifier = message => {
+	const execa = require('execa');
 	return execa(path.join(__dirname, '../scripts/notifier.applescript'), [message]);
 };
 

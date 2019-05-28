@@ -10,10 +10,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const Conf = require('conf');
-const importLazy = require('import-lazy')(require);
 
-const common = importLazy('./utils/common');
 const normalIcon = path.join(__dirname, 'media/icon.png');
 const activeIcon = path.join(__dirname, 'media/icon-active.png');
 const errorIcon = path.join(__dirname, 'media/icon-error.png');
@@ -21,10 +18,16 @@ const errorIcon = path.join(__dirname, 'media/icon-error.png');
 // Check dependencies
 const installed = fs.existsSync(path.join(__dirname, 'node_modules'));
 if (!installed) {
+	const common = require('./utils/common');
 	console.log(` | templateImage=${common.iconEncode(errorIcon)}`);
 	common.renderInstallMenu();
 	process.exit(1);
 }
+
+const Conf = require('conf');
+const importLazy = require('import-lazy')(require);
+
+const common = importLazy('./utils/common');
 
 // Load fanfou-sdk
 const Fanfou = importLazy('fanfou-sdk');
