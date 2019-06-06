@@ -40,7 +40,7 @@ if (!common.hasConfig()) {
 	process.exit(1);
 }
 
-const {consumerKey, consumerSecret, username, password, https, notification} = common.getSettings();
+const {consumerKey, consumerSecret, username, password, https, rateLimitStatus, notification} = common.getSettings();
 const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.com/mentions`;
 const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.com/privatemsg`;
 const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.com/friend.request`;
@@ -62,9 +62,13 @@ const ff = new Fanfou({
 		await ff.xauth();
 
 		// Get rate limit status
-		const limit = await ff.get('/account/rate_limit_status');
-		const {remaining_hits: remainingHits, hourly_limit: hourlyLimit, reset_time_in_seconds: resetTimeInSeconds} = limit;
-		const remainingSeconds = resetTimeInSeconds - Math.floor((Number(new Date())) / 1000);
+		let rateLimitParams = {};
+		if (rateLimitStatus) {
+			const limit = await ff.get('/account/rate_limit_status');
+			const {remaining_hits: remainingHits, hourly_limit: hourlyLimit, reset_time_in_seconds: resetTimeInSeconds} = limit;
+			const remainingSeconds = resetTimeInSeconds - Math.floor((Number(new Date())) / 1000);
+			rateLimitParams = {remainingHits, hourlyLimit, remainingSeconds};
+		}
 
 		// Get account notification
 		const result = await ff.get('/account/notification');
@@ -110,7 +114,11 @@ const ff = new Fanfou({
 		console.log(`Mentions: ${mentions}${mentions > 0 ? mentionsLink : ''}`);
 		console.log(`Direct messages: ${directMessages}${directMessages > 0 ? directMessagesLink : ''}`);
 		console.log(`Friend requests: ${friendRequests}${friendRequests > 0 ? friendRequestsLink : ''}`);
-		common.renderRateLimitStatus({remainingHits, hourlyLimit, remainingSeconds});
+
+		if (rateLimitStatus) {
+			common.renderRateLimitStatus(rateLimitParams);
+		}
+
 		common.renderClearNotifications(active);
 	} catch (error) {
 		console.log(` | templateImage=${common.iconEncode(errorIcon)}`);

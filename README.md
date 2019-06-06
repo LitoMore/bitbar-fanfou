@@ -44,8 +44,9 @@ $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 - `consumerSecret`: Your consumer secret
 - `username`: Your Fanfou username
 - `password`: Your Fanfou password
-- `https`: Use HTTPS secure connection
-- `notification`: Use macOS built-in notification
+- `https`: Use HTTPS secure connection, default to `true`
+- `rateLimitStatus`: Display rate limit status, default to `true`
+- `notification`: Use macOS built-in notification, default to `false`
 
 ## Related
 

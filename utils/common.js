@@ -48,7 +48,20 @@ const showNotifier = message => {
 };
 
 const getSettings = () => {
-	return JSON.parse(fs.readFileSync(path.join(__dirname, '../config/settings.json')));
+	const defaultSettings = {
+		consumerKey: '',
+		consumerSecret: '',
+		username: '',
+		password: '',
+		https: true,
+		rateLimitStatus: true,
+		notification: false
+	};
+
+	return {
+		...defaultSettings,
+		...JSON.parse(fs.readFileSync(path.join(__dirname, '../config/settings.json')))
+	};
 };
 
 module.exports = {
