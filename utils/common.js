@@ -29,6 +29,13 @@ const renderConfigMenu = () => {
 	console.log(`Reveal config in Finder | ${shell('open.sh', {terminal: false, param1: path.join(__dirname, '../config')})}"`);
 };
 
+const renderRateLimitStatus = params => {
+	const {remainingHits, hourlyLimit, remainingSeconds} = params;
+	console.log('—');
+	console.log(`Rate limit: ${remainingHits}/${hourlyLimit}`);
+	console.log(`Reset in: ${remainingSeconds} second${remainingHits > 1 ? 's' : ''}`);
+};
+
 const renderClearNotifications = enabled => {
 	const clearCommand = ` | ${shell('clear-notifications.js', {terminal: false, refresh: true})}`;
 	console.log('—');
@@ -41,7 +48,20 @@ const showNotifier = message => {
 };
 
 const getSettings = () => {
-	return JSON.parse(fs.readFileSync(path.join(__dirname, '../config/settings.json')));
+	const defaultSettings = {
+		consumerKey: '',
+		consumerSecret: '',
+		username: '',
+		password: '',
+		https: true,
+		rateLimitStatus: true,
+		notification: false
+	};
+
+	return {
+		...defaultSettings,
+		...JSON.parse(fs.readFileSync(path.join(__dirname, '../config/settings.json')))
+	};
 };
 
 module.exports = {
@@ -49,6 +69,7 @@ module.exports = {
 	iconEncode,
 	renderInstallMenu,
 	renderConfigMenu,
+	renderRateLimitStatus,
 	renderClearNotifications,
 	showNotifier,
 	getSettings

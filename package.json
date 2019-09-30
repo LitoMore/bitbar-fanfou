@@ -25,12 +25,12 @@
   "homepage": "https://github.com/LitoMore/bitbar-fanfou#readme",
   "dependencies": {
     "conf": "^4.1.0",
-    "execa": "^1.0.0",
+    "execa": "^2.0.0",
     "fanfou-sdk": "^4.0.0",
     "import-lazy": "^4.0.0"
   },
   "devDependencies": {
-    "xo": "^0.24.0"
+    "xo": "^0.25.3"
   },
   "xo": {
     "rules": {

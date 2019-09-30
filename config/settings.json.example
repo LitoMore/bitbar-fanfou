@@ -4,5 +4,6 @@
 	"username": "",
 	"password": "",
 	"https": true,
+	"rateLimitStatus": true,
 	"notification": false
 }
