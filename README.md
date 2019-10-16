@@ -47,6 +47,7 @@ $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 - `https`: Use HTTPS secure connection, default to `true`
 - `rateLimitStatus`: Display rate limit status, default to `true`
 - `notification`: Use macOS built-in notification, default to `false`
+- `ignoreFriendRequests`: Ignore friend requests for indicator
 
 ## Related
 

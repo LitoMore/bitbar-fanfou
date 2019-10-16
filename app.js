@@ -40,7 +40,7 @@ if (!common.hasConfig()) {
 	process.exit(1);
 }
 
-const {consumerKey, consumerSecret, username, password, https, rateLimitStatus, notification} = common.getSettings();
+const {consumerKey, consumerSecret, username, password, https, rateLimitStatus, notification, ignoreFriendRequests} = common.getSettings();
 const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.com/mentions`;
 const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.com/privatemsg`;
 const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.com/friend.request`;
@@ -108,7 +108,7 @@ const ff = new Fanfou({
 			);
 		}
 
-		const active = mentions + directMessages + friendRequests > 0;
+		const active = ignoreFriendRequests ? (mentions + directMessages > 0) : (mentions + directMessages + friendRequests > 0);
 		console.log(` | templateImage=${common.iconEncode(active ? activeIcon : normalIcon)}`);
 		console.log('---');
 		console.log(`Mentions: ${mentions}${mentions > 0 ? mentionsLink : ''}`);

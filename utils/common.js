@@ -55,7 +55,8 @@ const getSettings = () => {
 		password: '',
 		https: true,
 		rateLimitStatus: true,
-		notification: false
+		notification: false,
+		ignoreFriendRequests: false
 	};
 
 	return {
