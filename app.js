@@ -45,7 +45,7 @@ const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.com/mentions`
 const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.com/privatemsg`;
 const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.com/friend.request`;
 
-const config = new Conf();
+const config = new Conf({projectName: 'bitbar-fanfou'});
 const ff = new Fanfou({
 	consumerKey,
 	consumerSecret,
