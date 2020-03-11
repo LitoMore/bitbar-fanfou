@@ -30,7 +30,7 @@
     "import-lazy": "^4.0.0"
   },
   "devDependencies": {
-    "xo": "^0.26.0"
+    "xo": "^0.28.0"
   },
   "xo": {
     "rules": {
