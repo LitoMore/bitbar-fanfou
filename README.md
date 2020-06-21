@@ -48,6 +48,7 @@ $ ln -s "$PWD/app.js" /path/to/bitbar-fanfou.10s.js
 - `rateLimitStatus`: Display rate limit status, default to `true`
 - `notification`: Use macOS built-in notification, default to `false`
 - `ignoreFriendRequests`: Ignore friend requests for indicator, default to `false`
+- `useFanfouPro`: Use [fanfou.pro](https://fanfou.pro) to open links, default to `false`
 
 ## Related
 

@@ -40,10 +40,20 @@ if (!common.hasConfig()) {
 	process.exit(1);
 }
 
-const {consumerKey, consumerSecret, username, password, https, rateLimitStatus, notification, ignoreFriendRequests} = common.getSettings();
-const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.com/mentions`;
-const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.com/privatemsg`;
-const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.com/friend.request`;
+const {
+	consumerKey,
+	consumerSecret,
+	username,
+	password,
+	https,
+	rateLimitStatus,
+	notification,
+	ignoreFriendRequests,
+	useFanfouPro
+} = common.getSettings();
+const mentionsLink = ` | href=${https ? 'https' : 'http'}://fanfou.${useFanfouPro ? 'pro' : 'com'}/mentions`;
+const directMessagesLink = `| href=${https ? 'https' : 'http'}://fanfou.${useFanfouPro ? 'pro/direct.messages' : 'com/privatemsg'}`;
+const friendRequestsLink = `| href=${https ? 'https' : 'http'}://fanfou.${useFanfouPro ? 'pro' : 'com'}/friend.request`;
 
 const config = new Conf({projectName: 'bitbar-fanfou'});
 const ff = new Fanfou({
